@@ -37,6 +37,17 @@ class Actor {
         }
         return false;
     }
+    public function delete() {
+        $query = "DELETE FROM " . $this->table_name . " WHERE actor_id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->actor_id);
+        
+        if($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
 
     // Buscar actores por nombre
     public function search($keywords) {
@@ -51,6 +62,28 @@ class Actor {
         $stmt->execute();
         
         return $stmt;
+    }
+    public function update() {
+        $query = "UPDATE " . $this->table_name . " 
+                  SET first_name = ?, last_name = ?, last_update = NOW() 
+                  WHERE actor_id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        
+        // Limpiar los datos
+        $this->first_name = htmlspecialchars(strip_tags($this->first_name));
+        $this->last_name = htmlspecialchars(strip_tags($this->last_name));
+        $this->actor_id = htmlspecialchars(strip_tags($this->actor_id));
+        
+        // Vincular los parámetros
+        $stmt->bindParam(1, $this->first_name);
+        $stmt->bindParam(2, $this->last_name);
+        $stmt->bindParam(3, $this->actor_id);
+        
+        if($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 }
 ?>
