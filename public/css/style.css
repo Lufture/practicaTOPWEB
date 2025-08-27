@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.header nav a:hover {
+    background-color: #34495e;
+}
+
+/* Main content */
+.main {
+    min-height: calc(100vh - 140px);
+    padding: 20px 0;
+}
+
+.content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Search section */
+.search-section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.search-section h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    min-width: 300px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* Alerts */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Results */
+.results-count {
+    margin-bottom: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Actors grid */
+.actors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.actor-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.actor-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.actor-card h3 a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.actor-card h3 a:hover {
+    color: #3498db;
+}
+
+.actor-id {
+    color: #666;
+    font-size: 0.9em;
+    margin: 10px 0 5px 0;
+}
+
+.last-update {
+    color: #888;
+    font-size: 0.8em;
+}
+
+/* No results */
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+/* Actor detail */
+.actor-detail {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.actor-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-item label {
+    font-weight: bold;
+    min-width: 150px;
+    color: #2c3e50;
+}
+
+.info-item span {
+    flex: 1;
+}
+
+.actions {
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-input {
+        min-width: 250px;
+    }
+    
+    .search-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .actors-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-item {
+        flex-direction: column;
+    }
+    
+    .info-item label {
+        margin-bottom: 5px;
+    }
+}

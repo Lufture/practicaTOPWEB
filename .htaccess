@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Si no estamos en el directorio public, redirigir allí
+RewriteCond %{REQUEST_URI} !^/practica/public/
+RewriteRule ^(.*)$ /practica/public/$1 [L,R=301]
