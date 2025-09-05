@@ -52,8 +52,8 @@ class Actor {
     // Buscar actores por nombre
     public function search($keywords) {
         $query = "SELECT actor_id, first_name, last_name, last_update FROM " . $this->table_name . " 
-                  WHERE first_name LIKE ? OR last_name LIKE ? 
-                  ORDER BY last_name, first_name";
+                WHERE first_name LIKE ? OR last_name LIKE ? 
+                ORDER BY last_name, first_name";
         
         $stmt = $this->conn->prepare($query);
         $keywords = "%{$keywords}%";
@@ -65,8 +65,8 @@ class Actor {
     }
     public function update() {
         $query = "UPDATE " . $this->table_name . " 
-                  SET first_name = ?, last_name = ?, last_update = NOW() 
-                  WHERE actor_id = ?";
+                SET first_name = ?, last_name = ?, last_update = NOW() 
+                WHERE actor_id = ?";
         
         $stmt = $this->conn->prepare($query);
         
@@ -79,6 +79,25 @@ class Actor {
         $stmt->bindParam(1, $this->first_name);
         $stmt->bindParam(2, $this->last_name);
         $stmt->bindParam(3, $this->actor_id);
+        
+        if($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+    public function create(){
+        $query = "INSERT INTO " . $this->table_name . " 
+                SET first_name = ?, last_name = ?, last_update = NOW()";
+        
+        $stmt = $this->conn->prepare($query);
+        
+        // Limpiar los datos
+        $this->first_name = htmlspecialchars(strip_tags($this->first_name));
+        $this->last_name = htmlspecialchars(strip_tags($this->last_name));
+        
+        // Vincular los parámetros
+        $stmt->bindParam(1, $this->first_name);
+        $stmt->bindParam(2, $this->last_name);
         
         if($stmt->execute()) {
             return true;

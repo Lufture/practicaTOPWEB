@@ -94,5 +94,10 @@ class ActorController {
             $this->edit($id);
         }
     }
+
+    public function create() {
+        $page_title = "Crear Nuevo Actor";
+        include_once '../views/actors/create.php';
+    }
 }
 ?>
